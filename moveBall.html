@@ -1,0 +1,118 @@
+<div id="ball" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:green"></div>
+
+<div id="ball2" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:200px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:green"></div>
+
+<div id="ball3" style="
+z-index:5;
+position:absolute;
+left:0px;
+top:500px;
+width:50px;
+height:50px;
+border-radius:50%;
+background:black"></div>
+
+<div id="ball4" style="
+z-index:5;
+position:absolute;
+left:100px;
+top:0px;
+width:50px;
+height:50px;
+border-radius:50%;
+background:red"></div>
+
+<script>
+  
+
+var velocityX = 5;
+var velocityY = 10;
+var positionX = 0;
+var positionY = 0;
+var reverse = false;
+var ball = document.getElementById('ball');
+var ball2 = document.getElementById('ball2');
+var ball3 = document.getElementById('ball3');
+var ball4 = document.getElementById('ball4')
+
+
+// YOUR CODE 
+function moveball(){
+var Xmin = 0;
+var Xmax = 500;
+var Ymin = 0;
+var Ymax = 500;
+
+
+if(reverse){
+  positionX = positionX - velocityX;
+  positionY = positionY - velocityY;
+  ball.style.left = positionX + "px";
+  ball.style.top = positionY + "px";
+  
+} else {
+  positionX = positionX + velocityX;
+  positionY = positionY + velocityY;
+  ball.style.left = positionX + "px";
+  ball.style.top = positionY + "px";
+
+}
+
+if(reverse){
+  positionX = positionX - velocityX;
+  positionY = positionY - velocityY;
+  ball3.style.left = positionX - "px";
+  ball3.style.top = positionY +"px";
+} else {
+  positionX = positionX + velocityX;
+  positionY = positionY + velocityY;
+  ball3.style.right = positionX - "px";
+  ball3.style.top = positionY - "px";
+}
+
+if(reverse){
+  positionX = positionX - velocityX;
+  positionY = positionY - velocityY;
+  ball4.style.left = positionX - "px";
+  ball4.style.top = positionY - "px";
+} else {
+  positionX = positionX + velocityX;
+  positionY = positionY + velocityY;
+  ball4.style.right = positionX - "px";
+  ball4.style.top = positionY + "px";
+}
+
+if(positionX > Xmax || positionX === Xmin || positionY > Ymax || positionY === Ymin){
+  reverse = !reverse;
+}
+
+if(positionY === Ymax) {
+  ball4.style.backgroundColor = 'black';
+} else {
+  ball4.style.backgroundColor = 'red';
+}
+}
+
+setInterval(moveball, 50);
+
+
+
+
+// ----------------
+</script>
